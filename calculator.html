@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+
+
+
+    <style>
+        table{
+            margin: auto;
+            padding-top: 100px;
+        }
+        input{
+            height: 30px;
+            width: 60px;
+        }
+        .width{
+            margin-inline-start: 10px;
+            width: 90%;
+        }
+    </style>
+
+
+    <script>
+        var sign,no1,no2;
+        function getdata(k) {
+
+                if(k > 11 && k != 17){
+                    sign = k;
+                    no1 = parseInt(document.getElementById('display').value);
+                    console.log("no1 :" +no1);
+                    console.log("sign :" +sign);
+                    document.getElementById('display').value = "";
+                }
+                else if(k == 17)
+                {
+                    no2 = parseInt(document.getElementById('display').value);
+                    console.log("no2:" +no2);
+                    console.log("sign :" +sign);
+                    
+                    if(sign == 12)
+                    {
+                        document.getElementById('display').value = no1/no2;
+                    }
+                    else if(sign == 13)
+                    {
+                        document.getElementById('display').value = no1*no2;
+                    }
+                    else if(sign == 14)
+                    {
+                        document.getElementById('display').value = no1+no2;
+                    }
+                    else if(sign == 15)
+                    {
+                        document.getElementById('display').value = no1-no2;
+                    }
+                    else if(sign == 16)
+                    {
+                        document.getElementById('display').value = no1%no2;
+                    }
+
+                }
+                else if(k == 'c'){
+                    document.getElementById("display").value = "";
+                    console.log("display value  :" +  document.getElementById("display").value)
+                }
+                else if(k == 'cf'){
+                    no1 = "";
+                    sign = "";
+                    no2 ="";
+                    sign = "";
+                    document.getElementById('display').value = "";
+                    console.log("no1 : : " + no1 );
+                    console.log("sign : " + sign );
+                }
+                else if(k == 'bk')
+                {
+                    var back = document.getElementById('display').value;
+                    var backlength = back.length;
+                    var newDisplay = back.substr(0,(backlength-1));
+                }
+                else{
+                    document.getElementById('display').value = document.getElementById('display').value + k;
+                }
+                    
+
+               
+        }
+        
+    </script>
+
+
+
+
+</head>
+<body>
+
+    <table>
+        <tr>
+            <td colspan="4" style="padding-bottom: 20px !important;"><input type="text" value="" id="display" class="width" ></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="1" id="Num" onclick="getdata(1)" ></td>
+            <td><input type="button" value="2" id="Num" onclick="getdata(2)" ></td>
+            <td><input type="button" value="3" id="Num" onclick="getdata(3)" ></td>
+            <td><input type="button" value="/" id="Sign" onclick="getdata(12)" ></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="4" id="Num" onclick="getdata(4)" ></td>
+            <td><input type="button" value="5" id="Num" onclick="getdata(5)" ></td>
+            <td><input type="button" value="6" id="Num" onclick="getdata(6)" ></td>
+            <td><input type="button" value="*" id="Sign" onclick="getdata(13)" ></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="7" id="Num" onclick="getdata(7)" ></td>
+            <td><input type="button" value="8" id="Num" onclick="getdata(8)" ></td>
+            <td><input type="button" value="9" id="Num" onclick="getdata(9)" ></td>
+            <td><input type="button" value="+" id="Sign" onclick="getdata(14)" ></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="." id="Num" onclick="getdata('.')"></td>
+            <td><input type="button" value="0" id="Num" onclick="getdata(0)"></td>
+            <td><input type="button" value="%" id="Sign" onclick="getdata(16)"></td>
+            <td><input type="button" value="-" id="Sign" onclick="getdata(15)"></td>
+        </tr>
+
+        <tr>
+            <td><input type="button" value="C"  id="clear" onclick="getdata('c')" ></td>
+            <td><input type="button" value="CF" id="clear" onclick="getdata('cf')" ></td>
+            <td><input type="button" value="BK" id="clear" onclick="getdata('bk')" ></td>
+            <td><input type="button" value="=" id="Sign" onclick="getdata(17)"></td>
+           
+        </tr>
+    </table>
+
+</body>
+</html>
