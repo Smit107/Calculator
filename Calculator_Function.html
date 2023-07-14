@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="calcu.css">
+</head>
+<body>
+    
+    <table class="table">           
+        
+        <tr class="border"><td colspan="4"><input type="text" id="print_input" class="i1 width_input" readonly></td></tr>
+        <tr>
+            <td><input type="button" onclick="cl_data()" name="" value="C" class="i1 i2"></td>
+            <td><input type="button" onclick="br_value()" name="" value="BK" class="i1 i2"></td>
+            <td><input type="button" onclick="value_one(this.value)" name="" value="%"  class="i1 i2"></td>
+            <td><input type="button" onclick="value_one(this.value)" name="" value="/"  class="i1 i2"></td>
+        </tr>
+        <tr>
+            <td><input type="button" onclick="num_data(this.value)" name="" value="7" class="i1"></td>
+            <td><input type="button" onclick="num_data(this.value)" name="" value="8" class="i1"></td>
+            <td><input type="button" onclick="num_data(this.value)" name="" value="9" class="i1"></td>
+            <td><input type="button" onclick="value_one(this.value)" name="" value="X" class="i1 i2"></td>
+        </tr>
+        <tr>
+            <td><input type="button" onclick="num_data(this.value)" name="" value="4" class="i1"></td>
+            <td><input type="button" onclick="num_data(this.value)" name="" value="5" class="i1"></td>
+            <td><input type="button" onclick="num_data(this.value)" name="" value="6" class="i1"></td>
+            <td><input type="button" onclick="value_one(this.value)" name="" value="-" class="i1 i2"></td>
+        </tr>
+        <tr>
+            <td><input type="button" onclick="num_data(this.value)" name="" value="1" class="i1"></td>
+            <td><input type="button" onclick="num_data(this.value)" name="" value="2" class="i1"></td>
+            <td><input type="button" onclick="num_data(this.value)" name="" value="3" class="i1"></td>
+            <td><input type="button" onclick="value_one(this.value)" name="" value="+" class="i1 i2"></td>
+        </tr>
+        <tr>
+            <td><input type="button" onclick="num_data(this.value)" name="" value="0" class="i1"></td>
+            <td><input type="button" onclick="num_data(this.value)" name="" value="." class="i1"></td> 
+            <td colspan="2"><input type="button" onclick="equal_value()" value="=" class="i1 i2" style="width: 93%;"></td>
+        </tr>
+    </table> 
+
+
+    <script>
+        var no1,no2,sign;
+        function num_data(amr) {
+            document.getElementById('print_input').value += amr;
+        }
+
+        function value_one (k){
+            no1 = parseFloat(document.getElementById('print_input').value);
+            document.getElementById('print_input').value = '';
+            sign = k ;
+        }
+
+        function equal_value(){
+            no2 = parseFloat(document.getElementById('print_input').value);
+
+            if(sign == '%'){
+                document.getElementById('print_input').value = no1 % no2;
+            }
+            else if(sign == '/'){
+                document.getElementById('print_input').value = no1 / no2;
+            }
+            else if(sign == 'X'){
+                document.getElementById('print_input').value = no1 * no2;
+            }
+            else if(sign == '-'){
+                document.getElementById('print_input').value = no1 - no2;
+            }
+            else if(sign == '+'){
+                document.getElementById('print_input').value = no1 + no2;
+            }
+        }
+
+        function br_value(){
+            var x = document.getElementById('print_input').value;
+            document.getElementById('print_input').value = x.substr(0,x.length-1);
+        }
+
+        function cl_data(){
+            document.getElementById('print_input').value = '';
+        }
+
+
+
+    </script>
+</body>
+</html>
